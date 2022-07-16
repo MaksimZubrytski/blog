@@ -40,6 +40,8 @@ export class AuthService {
   private handleError(error: HttpErrorResponse) {
     const { message } = error.error.error;
 
+    console.log('[Handle error]:', error)
+
     switch (message) {
       case 'INVALID_EMAIL':
         this.error$.next('Invalid email');

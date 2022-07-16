@@ -12,7 +12,6 @@ export class PostsService {
   create(post: Post): Observable<Post> {
     return this.http.post<any>(`${environment.fbDbUrl}/posts.json`, post).pipe(
         map((response: fbCreateResponse) => {
-            console.log(response)
             return {
                 ...post,
                 id: response.name,
@@ -35,4 +34,24 @@ export class PostsService {
           })
       )
   }
+
+  getById(id: string) {
+      return this.http.get<Post>(`${environment.fbDbUrl}/posts/${id}.json`).pipe(
+          map((post) => {
+              return {
+                  ...post,
+                  id,
+                  date: new Date(post.date)
+              }
+          })
+      )
+  }
+
+  delete(id:string | undefined): Observable<void> {
+      return this.http.delete<void>(`${environment.fbDbUrl}/posts/${id}.json`)
+  }
+
+  update(post:Post): Observable<Post> {
+    return this.http.patch<Post>(`${environment.fbDbUrl}/posts/${post.id}.json`, post)
+}
 }

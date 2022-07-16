@@ -1,7 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
     <h1>Create new post</h1>
 
-    <div class="form-control" [ngClass]="{invalid: form.get('author')?.touched && form.get('author')?.invalid}">
+    <div class="form-control" [ngClass]="{invalid: form.get('title')?.touched && form.get('title')?.invalid}">
         <label for="title">Title:</label>
         <input id="title" type="text" formControlName="title">
         <div *ngIf="form.get('title')?.touched && form.get('title')?.invalid" class="validation">

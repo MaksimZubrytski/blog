@@ -17,7 +17,9 @@ export class AuthInterseptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    console.log('INTERSEPTOR WORK')
     if (this.auth.isAuthenticated()) {
+      console.log('add token')
       req = req.clone({
         setParams: {
           auth: this.auth.token,

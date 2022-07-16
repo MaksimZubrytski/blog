@@ -1,8 +1,6 @@
-<div class="posts">
-  <a routerLink="/admin">ADMIN</a>
-  <app-post></app-post>
-  <app-post></app-post>
-  <app-post></app-post>
-  <app-post></app-post>
-  <app-post></app-post>
+<div class="posts" *ngIf="posts$ | async as posts; else loading">
+  <app-post *ngFor="let post of posts" [post]="post"></app-post>
 </div>
+<ng-template #loading>
+  <div>DOWLOADING POST.....</div>
+</ng-template>

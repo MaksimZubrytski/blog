@@ -17,7 +17,7 @@
                 <th>{{idx + 1}}</th>
                 <th>{{post.author}}</th>
                 <th>{{post.title}}</th>
-                <th>{{post.date}}</th>
+                <th>{{post.date | date:'medium'}}</th>
                 <th>
                     <a [routerLink]="['/admin', 'post', post.id, 'edit']">Open</a>
                     <button class="btn btn-danger" (click)="remove(post.id)">Delete</button>
